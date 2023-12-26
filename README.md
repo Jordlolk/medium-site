@@ -1,2 +1,2 @@
 # medium-site
-I'm creating a real website 
+I´m creating medium-sized site
