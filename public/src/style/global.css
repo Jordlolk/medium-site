@@ -2,6 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: sans-serif;
 }
 :root{
   --text: black;
@@ -9,11 +10,10 @@
   --border: rgb(255, 123, 0);
   --p : rgb(255, 0, 0);
   --background : rgb(70, 112, 189);
-  --black: black ;
   --link: rgb(174, 0, 255);
 }
 h1,h2,h3,h4{
-  color: var(--link);
+  color: #904E55;
 }
 a{
   color: var(--link);
