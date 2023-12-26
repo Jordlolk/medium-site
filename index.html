@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSite</title>
+</head>
+<body>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        @media screen and (max-width : 799px) {
+            body{
+                background-size: none;
+            }
+            input{
+                height: 2rem;
+            }
+            button{
+                font-size: 18px;
+                padding: 8px;
+            }
+            form{
+                margin: 8px;
+            }
+            label{
+                font-size: 14px;
+                font-weight: 600;
+            }
+        }
+        @media screen and (min-width : 800px) {
+            body{
+                background-size: cover;
+                background-color: rebeccapurple;
+            }
+            input{
+                height: 2.4rem;
+            }
+            button{
+                font-size: 18px;
+                padding: 10px;
+            }
+            form{
+                margin: 20px;
+            }
+            label{
+                font-size: 20px;
+            }
+        }
+        #w{
+            height: 22px;
+            width: 22px;
+        }
+        #w:checked{
+            background-color: var(--text);
+        }
+        body{
+            background-image: url(background.png);
+            background-repeat: no-repeat;
+        }
+        :root{
+            --text: black;
+            --textButton : white;
+            --border: rgb(255, 123, 0);
+            --p : rgb(255, 0, 0);
+            --background : rgb(70, 112, 189);
+            --black: black ;
+            --link: rgb(174, 0, 255);
+        }
+        h1,h2,h3,h4{
+            color: var(--link);
+        }
+        a{
+            color: var(--link);
+        }
+        p{
+            color: var(--p);
+        }
+        header{
+            text-align: center;
+        }
+        main{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h2{
+            margin-bottom: 18px;
+            font-size: 34px;
+            width: 80%;
+            text-align: center; 
+            border-bottom: 2px solid var(--background);
+            position: relative;
+        }
+        form{
+            width: 40%;
+            backdrop-filter: blur(50px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 12px;
+            gap: 30px;
+            border: solid 2px var(--background);
+            border-radius: 4%;
+        }
+        form div{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .getters{
+            margin: 12px;
+            gap: 8px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .getters:nth-of-type(3) p{
+            color: transparent;
+        }
+        label{
+            color: rgb(0, 0, 0);
+            font-family: sans-serif;
+        }
+        input{
+            outline: none;
+            width: 100%;
+            border: solid 2px var(--background);
+            padding: 10px;
+        }
+        input::placeholder{
+            padding: 1px;
+            font-style: oblique;
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.685);
+        }
+        input:hover{
+            background-color: rgba(128, 128, 128, 0.178);
+        }
+        .submisse{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            align-content: center;
+        }
+        .submisse label{
+            display: flex;
+            gap: 8px;
+            width: 100%;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .submisse input{
+            width: 20px;
+        }
+        button{
+            color: var(--textButton);
+            width: 50%;
+            cursor: pointer;
+            background-color: var(--background);
+            border: groove 2px var(--black);
+            transition: 300ms ease-in-out;
+        }
+        button:hover{
+            background-color: var(--p);
+        }
+        .createAccount{
+            background-color: transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-weight: 900;
+            padding: 0px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 14px;
+        }
+        .createAccount a{
+            border: solid 2px rgba(255, 255, 255, 0);
+            transition: 200ms ease-in-out;
+            text-decoration: none;
+            border-radius: 50px;
+            padding: 8px;
+        }
+        .createAccount a:hover{
+             border: solid 2px var(--link);
+        }
+    </style>
+    <main>
+        <form>
+            <div>
+                <h2>Login</h2>
+                <div class="getters">
+                    <label for="">E-mail</label>
+                    <p>*</p>
+                </div>
+                <input placeholder="nome@gmail..." type="text" name="" id="">
+                <div class="getters">
+                    <label for="">Senha</label>
+                    <p>*</p>
+                </div>
+                <input placeholder="12345" type="text" name="" id="">
+                <div class="getters">
+                    <label for="">Img Profile</label>
+                    <p>*</p>
+                </div>
+                <input placeholder="Link imagem..." type="text" name="" id="">
+            </div>
+            <div class="submisse">
+                <label>
+                    <input type="checkbox" name="" id="w">
+                    <span>Manter-me logado</span>
+                </label>
+                <button>Logar</button>
+            </div>
+        </form>
+        <div class="createAccount">
+            <p>Não possui uma conta? </p>
+            <a href="#top">Criar conta</a>
+        </div>
+    </main>
+</body>
+</html>
