@@ -1,0 +1,31 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:root{
+  --text: black;
+  --textButton : white;
+  --border: rgb(255, 123, 0);
+  --p : rgb(255, 0, 0);
+  --background : rgb(70, 112, 189);
+  --black: black ;
+  --link: rgb(174, 0, 255);
+}
+h1,h2,h3,h4{
+  color: var(--link);
+}
+a{
+  color: var(--link);
+}
+p{
+  color: var(--p);
+}
+h2{
+  margin-bottom: 18px;
+  font-size: 34px;
+  width: 80%;
+  text-align: center; 
+  border-bottom: 2px solid var(--background);
+  position: relative;
+}
