@@ -1,11 +1,10 @@
 :root{
   --text: black;
-  --textButton : white;
-  --border: rgb(255, 123, 0);
+  --white : white;
+  --effects: rgb(83, 15, 122);
   --p : rgb(255, 0, 0);
-  --background : rgb(70, 112, 189);
-  --black: black ;
-  --link: rgb(174, 0, 255);
+  --background : rgb(0, 85, 243);
+  --border: rgb(174, 0, 255);
 }
 body{
   background-image: url(../img/background.png);
@@ -29,6 +28,9 @@ body{
       font-size: 14px;
       font-weight: 600;
   }
+  .getters{
+    width: 100%;
+  }
 }
 @media screen and (min-width : 800px) {
   body{
@@ -48,61 +50,57 @@ body{
   label{
       font-size: 20px;
   }
+  .getters{
+    width: 50%;
+  }
 }
 header{
-  text-align: center;
-}
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}  
 main{
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 h2{
-  margin-bottom: 18px;
-  font-size: 34px;
-  width: 80%;
+  font-size: 40px;
+  width: 50%;
   text-align: center; 
-  border-bottom: 2px solid var(--background);
-  position: relative;
 }
 form{
-  width: 40%;
+  width: 50%;
   backdrop-filter: blur(50px);
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 12px;
+  padding: 18px;
   gap: 30px;
-  border: solid 2px var(--background);
+  border: solid 2px var(--border);
   border-radius: 4%;
 }
-form div{
-  width: 100%;
+
+.getters{
+  gap: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-}
-.getters{
-  margin: 12px;
-  gap: 8px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   justify-content: flex-start;
 }
-.getters:nth-of-type(3) p{
-  color: transparent;
-}
+
 label{
+  width: 100%;
   color: rgb(0, 0, 0);
   font-family: sans-serif;
 }
 input{
   outline: none;
   width: 100%;
-  border: solid 2px var(--background);
+  border: solid 3px var(--effects);
   padding: 10px;
+  border-radius: 20px;
+  transition: 300ms ease-in-out;
 }
 input::placeholder{
   padding: 1px;
@@ -111,7 +109,10 @@ input::placeholder{
   color: rgba(0, 0, 0, 0.685);
 }
 input:hover{
-  background-color: rgba(128, 128, 128, 0.178);
+  background-color: var(--effects);
+}
+input:hover::placeholder{
+  color: var(--white);
 }
 .submisse{
   display: flex;
@@ -131,16 +132,21 @@ input:hover{
 .submisse input{
   width: 20px;
 }
+.submisse button:disabled{
+  cursor: no-drop;
+  opacity: 0.1;
+}
 button{
   color: var(--textButton);
-  width: 50%;
+  width: 100%;
   cursor: pointer;
-  background-color: var(--background);
+  background-color: var(--link);
   border: groove 2px var(--black);
-  transition: 300ms ease-in-out;
+  transition: 200ms ease-in-out;
 }
-button:hover{
-  background-color: var(--p);
+button:enabled:hover{
+  background-color: var(--textButton);
+  color: var(--link);
 }
 .createAccount{
   background-color: transparent;

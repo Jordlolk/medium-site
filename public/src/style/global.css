@@ -21,11 +21,3 @@ a{
 p{
   color: var(--p);
 }
-h2{
-  margin-bottom: 18px;
-  font-size: 34px;
-  width: 80%;
-  text-align: center; 
-  border-bottom: 2px solid var(--background);
-  position: relative;
-}
