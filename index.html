@@ -4,39 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebSite</title>
-    <link rel="stylesheet" href="public/src/style/global.css">
-    <link rel="stylesheet" href="public/src/style/index.css">
+    <link rel="stylesheet" href="src/style/global.css">
+    <link rel="stylesheet" href="src/style/index.css">
 </head>
-<body>
+<body> 
     <header>
         <h2>Login</h2>
     </header>
     <main>
-            <form>
+            <form id="form">
                     <div class="getters">
-                        <label for="">E-mail</label>
-                        <input placeholder="Nome@gmail...." type="text" name="" id="">
+                        <label for="email">E-mail</label>
+                        <input placeholder="Nome@gmail.br" type="text"  name="email" id="email">
+                        <p id="resultEmail" class="error">E-mail verification</p>
                     </div>
                     <div class="getters">
-                        <label for="">Senha</label>
-                        <input placeholder="12345" type="text" name="" id="">
+                        <label for="senha">Senha</label>
+                        <input placeholder="12345" type="text" name="senha" id="senha">
+                        <p id="resultSenha" class="error">Password verification</p>
                     </div>
                     <div class="getters">
-                        <label for="">Img Profile</label>
-                        <input placeholder="Link imagem..." type="text" name="" id="">
+                        <label for="imgprofile">Img Profile</label>
+                        <input placeholder="Link imagem..." type="text" name="imgprofile" id="imgprofile">
+                        <p id="resultprofile" class="error">Img verification</p>
                     </div>
                 <div class="submisse">
                     <label>
-                        <input type="checkbox" name="" id="w">
+                        <input type="checkbox" name="keepLoggedIn" id="keepLoggedIn">
                         <span>Manter-me logado</span>
                     </label>
-                    <button>Logar</button>
+                    <button type="submit">Logar</button>
                 </div>
         </form>
-        <div class="createAccount">
+        <section class="createAccount">
             <p>Não possui uma conta?</p> 
             <a href="#top">Criar conta</a>
-        </div>
+        </section>
+    <script src="./src/style/main.js">
+    </script>
     </main>
 </body>
 </html>
