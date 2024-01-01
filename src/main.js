@@ -127,8 +127,9 @@ function newUser(e){
 }
 var reset ;
 document.querySelector('h2').addEventListener('mouseenter' , () => {
-    reset = window.confirm('A')
-   return window.confirm('A')
+    reset = window.confirm('You pass the mouse on Login text: Clear the array of users?')
+    window.alert('I`m saving the data on local storage')
+   return ;
 })
 //j0rd4ll3fs1lv41234
 function saveUser(newUser){
