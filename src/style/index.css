@@ -129,6 +129,7 @@ input:hover::placeholder{
   text-transform: uppercase;
   font-weight: bolder;
   color: transparent;
+  user-select: none;
 }
 .valid{
     border: 3px solid rgb(30, 255, 0);
