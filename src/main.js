@@ -148,6 +148,7 @@ function saveUser(newUser){
     // Salvar a lista atualizada de volta no localStorage
     localStorage.setItem('users', JSON.stringify(users));
     window.alert(`User ${newUser.username} queue with sucess!`);
+    window.location.href = 'home.html'
     if(reset){
         users = []
     }
