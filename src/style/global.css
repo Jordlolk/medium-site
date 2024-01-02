@@ -4,20 +4,21 @@
   padding: 0;
   font-family: sans-serif;
 }
+
 :root{
-  --text: black;
-  --textButton : white;
-  --border: rgb(255, 123, 0);
-  --p : rgb(255, 0, 0);
-  --background : rgb(70, 112, 189);
-  --link: rgb(174, 0, 255);
+  --text: white;
+  --effects: rgba(12, 228, 203, 0.527);
+  --background : #252627;
+  --border: black;
 }
-h1,h2,h3,h4{
-  color: #904E55;
+body{
+  background: linear-gradient(to right, rgb(0, 0, 0) ,
+   rgb(12, 228, 203));
+}
+
+h1,h2,h3,h4,p{
+  color: var(--text);
 }
 a{
   color: var(--link);
-}
-p{
-  color: var(--p);
 }

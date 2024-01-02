@@ -52,7 +52,6 @@ function checkEmail(email){
         if(limitEmail.test(email)){
             resultEmail.innerHTML = "Limite Excedido!"
         } else {
-           
             resultEmail.innerHTML = "Sinal de @ necessário"
         }
         return false
@@ -108,15 +107,14 @@ const usersData = {
 function newUser(e){
     e.preventDefault()
     if(checkEmail(emailText) && checkPassowrd(senhaText) && checkImgLink(imgLinkText)){
-        
         if(checkbox.checked){
             let name = emailText.split('@')[0]
             const user = {
-                        id : count,
-                        email : emailText,
-                        username : name,
-                        password : senhaText,
-                        profile : imgLinkText === '' ? '../public/img/profile_standardImg.png' : imgLinkText
+                id : count,
+                email : emailText,
+                username : name,
+                password : senhaText,
+                profile : imgLinkText === '' ? '../public/img/profile_standardImg.png' : imgLinkText
             }
             saveUser(user)
             count += 1
@@ -125,32 +123,30 @@ function newUser(e){
         }
     }
 }
-var reset ;
-document.querySelector('h2').addEventListener('mouseenter' , () => {
-    reset = window.confirm('You pass the mouse on Login text: Clear the array of users?')
-    window.alert('I`m saving the data on local storage')
-   return ;
-})
+
 //j0rd4ll3fs1lv41234
 function saveUser(newUser){
-    // Obter a lista de usuários do localStorage
+    // Get the list of localStorage
     let users = localStorage.getItem('users');
     users = users ? JSON.parse(users) : [];
-
-    // Verificar se o usuário já existe
-    if (users.includes(newUser.id)) {
+    console.log();
+    // cheking with the user already exists
+    if (users.some(user => user.id === newUser.id)){
         let res = window.confirm(`User: ${newUser.username} already exists , is that you?`);
         res ? window.location.href = 'home.html' : window.alert('change your data.');
         return;
     }
-    // Adicionar novo usuário
+    // queue new user 
     users.push(newUser);
-    // Salvar a lista atualizada de volta no localStorage
+    // save the array of users on local storage and set the max length
     localStorage.setItem('users', JSON.stringify(users));
-    window.alert(`User ${newUser.username} queue with sucess!`);
-    window.location.href = 'home.html'
-    if(reset){
-        users = []
+    let localStorageLength =  JSON.parse(localStorage.getItem('users')).length
+    if(localStorageLength > 10){
+        window.alert('The local storage will be clear :)')
+        localStorage.clear()
     }
+    window.alert(`User ${newUser.username} queue with sucess , send you to Home!`);
+    users = []
+    window.location.href = 'home.html'
     return true;
 }

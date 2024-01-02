@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar</title>
+    <link rel="stylesheet" href="./src/style/global.css">
+    <link rel="stylesheet" href="./src/style/login.css">
+</head>
+<body>
+    <header>
+        <h1>Olá novamente!</h1>
+    </header>
+    <main>
+        <form id="form">
+            <div class="getters">
+                <label for="email">E-mail</label>
+                <input placeholder="Nome@gmail.br" type="text"  name="email" id="email">
+                <p id="resultEmail" class="error">E-mail verification</p>
+            </div>
+            <div class="getters">
+                <label for="senha">Senha</label>
+                <input placeholder="12345" type="text" name="senha" id="senha">
+                <p id="resultSenha" class="error">Password verification</p>
+            </div>
+            <section class="submisse">
+                <button type="submit">Logar</button>
+            </section>
+        </form>
+        <section class="createAccount">
+            <p>Não possui uma conta?</p> 
+            <a href="index.html">Cadastrar-se</a>
+        </section>
+    </main>
+</body>
+</html>
