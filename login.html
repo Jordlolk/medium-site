@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entrar</title>
+    <title>Login</title>
     <link rel="stylesheet" href="./src/style/global.css">
     <link rel="stylesheet" href="./src/style/login.css">
 </head>
 <body>
     <header>
-        <h1>Olá novamente!</h1>
+        <h1>Hello again!</h1>
     </header>
     <main>
         <form id="form">
@@ -19,18 +19,19 @@
                 <p id="resultEmail" class="error">E-mail verification</p>
             </div>
             <div class="getters">
-                <label for="senha">Senha</label>
-                <input placeholder="12345" type="text" name="senha" id="senha">
-                <p id="resultSenha" class="error">Password verification</p>
+                <label for="password">Password</label>
+                <input placeholder="12345" type="text" name="password" id="password">
+                <p id="resultPassword" class="error">Password verification</p>
             </div>
             <section class="submisse">
-                <button type="submit">Logar</button>
+                <button type="submit">Login</button>
             </section>
         </form>
-        <section class="createAccount">
-            <p>Não possui uma conta?</p> 
-            <a href="index.html">Cadastrar-se</a>
+        <section class="loggedAccount">
+            <p>Dont have a account?</p> 
+            <a href="index.html">Register</a>
         </section>
     </main>
+    <script src="src/login.js"></script>
 </body>
 </html>

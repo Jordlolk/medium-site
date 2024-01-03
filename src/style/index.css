@@ -123,14 +123,17 @@ input:hover{
 input:hover::placeholder{
   color: var(--text);
 }
+
 .error{
   font-size: 12px;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   text-transform: uppercase;
   font-weight: bolder;
+  text-align: center;
   color: transparent;
   user-select: none;
 }
+
 .valid{
     border: 3px solid rgb(30, 255, 0);
     transition: border-color 0.2s ease;
@@ -242,6 +245,6 @@ button:enabled:hover{
 }
 
 .createAccount a:hover{
-  border-bottom: 1px solid var(--effects);
+  border-bottom: 2px solid var(--effects);
 }
 

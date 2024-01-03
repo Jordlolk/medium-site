@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar</title>
+    <title>Register</title>
     <link rel="stylesheet" href="src/style/global.css">
     <link rel="stylesheet" href="src/style/index.css">
 </head>
 <body> 
     <header>
-        <h2>Bem-vindo</h2>
+        <h2>Welcome!</h2>
     </header>
     <main>
             <form id="form">
@@ -19,9 +19,9 @@
                         <p id="resultEmail" class="error">E-mail verification</p>
                     </div>
                     <div class="getters">
-                        <label for="senha">Senha</label>
-                        <input placeholder="12345" type="text" name="senha" id="senha">
-                        <p id="resultSenha" class="error">Password verification</p>
+                        <label for="password">Password</label>
+                        <input placeholder="12345" type="text" name="password" id="password">
+                        <p id="resultPassword" class="error">Password verification</p>
                     </div>
                     <div class="getters">
                         <label for="imgprofile">Img Profile</label>
@@ -31,17 +31,17 @@
                 <section class="submisse">
                     <label>
                         <input type="checkbox" name="keepLoggedIn" id="keepLoggedIn">
-                        <span>Manter-me logado</span>
+                        <span>Keep me Logged in</span>
                     </label>
-                    <button type="submit">Cadastrar-se</button>
+                    <button type="submit">Register</button>
                 </section>
         </form>
         <section class="createAccount">
-            <p>Já possui uma conta?</p> 
-            <a href="login.html">Logar</a>
+            <p>Do you have a account?</p> 
+            <a href="login.html">Login</a>
         </section>
+    </main>
     <script type="module" src="./src/main.js">
     </script>
-    </main>
 </body>
 </html>

@@ -15,6 +15,13 @@ header{
   margin-top: 40px;
 }
 
+h1{
+  font-size: 40px;
+  width: 50%;
+  color: white;
+  text-align: center; 
+}
+
 main{
   display: flex;
   flex-direction: column;
@@ -44,10 +51,60 @@ input{
 
 .getters{
   gap: 2px;
+  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+}
+
+.error{
+  font-size: 12px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-transform: uppercase;
+  font-weight: bolder;
+  text-align: center;
+  color: transparent;
+  user-select: none;
+}
+
+.valid{
+  border: 3px solid rgb(30, 255, 0);
+  transition: border-color 0.2s ease;
+  animation: shake1 1s;
+} 
+
+.invalid{
+  border: 3px solid red;
+  transition: border-color 0.2s ease;
+  animation : shake 0.5s
+}
+
+@keyframes shake1 {
+  0%, 100% {
+      box-shadow: 2px 2px 10px rgb(0, 255, 0);
+  }
+  25%, 60% {
+      box-shadow: 2px 2px 10px rgba(0, 255, 0, 0.603);
+  }
+  70% , 90% {
+      box-shadow: 2px 2px 10px rgba(0, 255, 0, 0.747);
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+      transform: translateX(0);
+      box-shadow: 2px 2px 10px rgb(255, 0, 0);
+  }
+  20%, 60% {
+      transform: translateY(-5px);
+      box-shadow: 2px 2px 10px rgb(255, 0, 0);
+  }
+  40%, 80% {
+      transform: translateX(4px);
+      box-shadow: 2px 2px 10px rgb(255, 0, 0);
+  }
 }
 
 label{
@@ -122,7 +179,7 @@ button:enabled:hover{
   background-color: var(--effects);
   color: var(--text);
 }
-.createAccount{
+.loggedAccount{
   background-color: transparent;
   display: flex;
   margin-top: 20px;
@@ -135,12 +192,12 @@ button:enabled:hover{
   border-radius: 40px;
 }
 
-.createAccount p{
+.loggedAccount p{
   font-size: 18px;
   color: aqua;
 }
 
-.createAccount a{
+.loggedAccount a{
   transition: 200ms ease-in-out;
   text-decoration: none;
   font-weight: 600;
@@ -149,6 +206,6 @@ button:enabled:hover{
   border-bottom: 1px solid transparent;
 }
 
-.createAccount a:hover{
-  border-bottom: 1px solid var(--effects);
+.loggedAccount a:hover{
+  border-bottom: 2px solid var(--effects);
 }
