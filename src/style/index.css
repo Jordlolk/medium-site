@@ -204,14 +204,7 @@ input:hover::placeholder{
   opacity: 0.1;
 }
 
-button{
-  color: var(--text);
-  width: 100%;
-  border: solid 4px var(--border);
-  cursor: pointer;
-  background-color: var(--background);
-  transition: 200ms ease-in-out;
-}
+
 
 button:enabled:hover{
   background-color: var(--effects);

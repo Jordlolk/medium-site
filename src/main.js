@@ -120,7 +120,7 @@ function newUser(e){
             email : emailText,
             username : name,
             password : psswordText,
-            profile : imgLinkText === '' ? '../public/img/profile_standardImg.png' : imgLinkText
+            profile : imgLinkText === '' ? './public/img/profile_standardImg.png' : imgLinkText
         }
         saveUser(user)
         if(checkbox.checked){

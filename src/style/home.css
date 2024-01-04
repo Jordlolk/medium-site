@@ -1,0 +1,44 @@
+:root{
+  --text: white;
+  --effects: rgba(10, 244, 217, 0.727);
+  --background : #252627;
+  --border: black;
+}
+
+#profilePic{
+  height: 10px;
+}
+
+.menu{
+  padding: 12px;
+  width: 100%;
+  background-color: var(--border);
+  /* background: linear-gradient(to right, rgb(212, 212, 212) ,
+   rgb(0, 0, 0)); */
+  border-bottom: solid 4px var(--border);
+}
+
+.menu ul{
+  gap: 38px;
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+}
+.menu li:last-child{
+    position: absolute;
+    right: 2%;
+}
+
+button{
+  padding: 4px;
+  font-size: 18px;
+  color: var(--text);
+  background-color: var(--border);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+}
+
+button:hover{
+  margin: -2px 0px;
+  box-shadow: var(--effects) 1px  8px 12px;
+}

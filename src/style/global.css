@@ -11,12 +11,22 @@
   --background : #252627;
   --border: black;
 }
+
 body{
   background: linear-gradient(to right, rgb(0, 0, 0) ,
    rgb(12, 228, 203));
 }
 
-h1,h2,h3,h4,p{
+button{
+  color: var(--text);
+  width: 100%;
+  border: solid 4px var(--border);
+  cursor: pointer;
+  background-color: var(--background);
+  transition: 200ms ease-in-out;
+}
+
+h1,h2,h3,h4,p,li,span{
   color: var(--text);
 }
 a{
