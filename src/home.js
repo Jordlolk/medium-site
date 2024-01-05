@@ -3,7 +3,6 @@ profileName = document.getElementById('profileName'),
 profileEmail = document.getElementById('profileEmail'),
 profilePagePc = document.getElementById('profilePagePc')
 let userLoggedIn = JSON.parse(localStorage.getItem('userLoggingIn'))
-console.log(userLoggedIn);
 
 /* const loadProfilePage = (e) => {
     window.location.href = ''
@@ -14,24 +13,32 @@ profilePage.addEventListener('click' , loadProfilePage)
 /* profilePic.src = `${userLoggedIn.profile}`
 profileName.innerHTML = userLoggedIn.username
 profileEmail.innerHTML = userLoggedIn.email */
-
+const handleInput = () => {
+  
+}
+profilePagePc.addEventListener('click' , handleInput)
 document.addEventListener("DOMContentLoaded", function() {
   
   const menuButton = document.createElement("button");
-  menuButton.innerHTML = '&#9776'
+  const link = document.createElement("a")
+  link.innerHTML = "&#9776"
+  link.href = 'profile.html'
+  menuButton.appendChild(link)
+  link.classList.add('a')
   menuButton.classList.add("buttonMobile");
 
   const ul = document.querySelector("ul");
   ul.appendChild(menuButton);
-
   function adjustMenuForScreenWidth(){
     const screenWidth = window.innerWidth;
     if (screenWidth < 699) {
       profilePagePc.style.display = "none";
       menuButton.style.display = "block";
+      ul.appendChild(menuButton)
     } else {
       profilePagePc.style.display = "block";
-      menuButton.style.display = "none";
+      menuButton.style.display = "block";
+      menuButton.remove()
     }
 }
 
@@ -39,3 +46,5 @@ document.addEventListener("DOMContentLoaded", function() {
   window.addEventListener("resize", adjustMenuForScreenWidth);
   adjustMenuForScreenWidth(); // Chama a função inicialmente
 });
+
+
