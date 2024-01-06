@@ -4,16 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
+    <link rel="stylesheet" href="src/style/global.css">
+    <link rel="stylesheet" href="src/style/profile.css">
 </head>
 <body>
-    <header>
+    <header class="hello">
          <h1></h1>
+         <div class="hoursDiv">
+            <span>Hours</span>
+            <span id="hours"></span>
+         </div>
+         <img alt="Profile_picture" id="profilePic" draggable="false">
     </header>
     <main>
         <section>
-            <img alt="Profile_picture" id="profilePic">
-            <span id="profileName"></span>
-            <span id="profileEmail"></span>
+            <div class="test">
+                <p id="profileName"></p>
+                <span></span>
+                <p id="profileEmail"></p>
+            </div>
         </section>
     </main>
     <script src="./src/profile.js"></script>

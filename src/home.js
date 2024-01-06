@@ -4,19 +4,6 @@ profileEmail = document.getElementById('profileEmail'),
 profilePagePc = document.getElementById('profilePagePc')
 let userLoggedIn = JSON.parse(localStorage.getItem('userLoggingIn'))
 
-/* const loadProfilePage = (e) => {
-    window.location.href = ''
-}
-profilePage.addEventListener('click' , loadProfilePage)
- */
-
-/* profilePic.src = `${userLoggedIn.profile}`
-profileName.innerHTML = userLoggedIn.username
-profileEmail.innerHTML = userLoggedIn.email */
-const handleInput = () => {
-  
-}
-profilePagePc.addEventListener('click' , handleInput)
 document.addEventListener("DOMContentLoaded", function() {
   
   const menuButton = document.createElement("button");
