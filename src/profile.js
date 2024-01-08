@@ -3,6 +3,7 @@ profileNameHtml = document.getElementById('profileName'),
 profileEmailHtml = document.getElementById('profileEmail'),
 HelloPhrase = document.querySelector('h1'),
 hoursHtml = document.getElementById('hours')
+
 let userLoggedIn = JSON.parse(localStorage.getItem('userLoggingIn'))
 
 /* Iniciate personalizing */
@@ -20,6 +21,13 @@ function capitalize(str) {
 }
 
 HelloPhrase.innerHTML = `Hello ${capitalize(userLoggedIn.username)}👋`
-profileEmailHtml.innerHTML = userLoggedIn.email
-profileNameHtml.innerHTML = userLoggedIn.username
 profilePic.src = userLoggedIn.profile
+const showList = () => {
+  const dropList = document.getElementById('test')
+    if(dropList.style.display !== 'none'){
+        dropList.style.display = 'none'
+    }else {
+        dropList.style.display = 'flex'
+    }
+}
+profilePic.addEventListener('click' , showList)

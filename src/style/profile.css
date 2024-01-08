@@ -16,15 +16,43 @@ header{
   user-select: none;
   border-bottom: 2px solid var(--border);
   background-color: var(--background);
-  padding: 20px;
-  gap: 40px;
-  font-size: 18px;
+  padding: 10px;
+  gap: 20px;
+  font-size: 14px;
+  color: var(--text);
 }
 
 .hello img{
-  margin-left: auto;
+  cursor: pointer;
   height: 68px;
   width: 68px;
+  border: 2px solid transparent;
+  transition: 0.2s ease-in-out;
+}
+
+.hello img:hover{
+  border: 2px solid var(--effects);
+  border-radius: 70px;
+}
+
+.dropdown-list{
+  position: relative;
+  display: inline-block;
+  margin-left: auto;
+}
+
+.test{
+  position: absolute;
+  right: 0px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255);
+  max-width: 168px;
+  height: 180px;
+  border: 4px solid black;
+  border-radius: 18px;
+  justify-content: space-evenly;
 }
 
 .hoursDiv{
@@ -32,29 +60,19 @@ header{
   flex-direction: column;
   align-items: center;
 }
-
-.test{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  color: black;
-  background-color: white;
-
-  margin: auto;
-  width: 20%;
-  height: 200px;
+.hoursDiv span{
   font-size: 18px;
-  border: 4px solid black;
 }
-
-.test p{
+.test a{
   font-size: 14px;
   text-transform: uppercase;
   font-weight: bold;
   text-align: center;
+  text-decoration: none;
   color: var(--border);
+  padding: 8px;
   width: 100%;
+
 }
 
 .test span{
