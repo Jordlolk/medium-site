@@ -1,4 +1,4 @@
-//j0rd4ll3fs1lv41234
+/* //j0rd4ll3fs1lv41234
 const mysql = require('mysql2');
 
 const connection = mysql.createConnection({
@@ -41,4 +41,4 @@ function queueUser(usuario) {
       );
     });
   });
-}
+} */
