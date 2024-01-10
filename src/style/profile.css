@@ -45,7 +45,7 @@ header{
   position: absolute;
   right: 0px;
   z-index: 1;
-  display: flex;
+  display: none;
   flex-direction: column;
   background-color: rgb(255, 255, 255);
   max-width: 168px;
