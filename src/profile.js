@@ -1,5 +1,4 @@
-import { key } from './setAPI_key.js';
-console.log(key); 
+
 const profilePic = document.getElementById('profilePic'),
 profileNameHtml = document.getElementById('profileName'),
 profileEmailHtml = document.getElementById('profileEmail'),
@@ -25,10 +24,13 @@ HelloPhrase.innerHTML = `Hello ${capitalize(userLoggedIn.username)}👋`
 profilePic.src = userLoggedIn.profile
 const showList = () => {
   const dropList = document.getElementById('test')
-    if(dropList.style.display !== 'none'){
-        dropList.style.display = 'none'
-    }else {
+    if(dropList.style.display === 'none'){
         dropList.style.display = 'flex'
+    }else {
+        dropList.style.display = 'none'
     }
 }
 profilePic.addEventListener('click' , showList)
+fetch('http://localhost:3000/api')
+.then(res => res.json())
+.then(data => console.log(data))

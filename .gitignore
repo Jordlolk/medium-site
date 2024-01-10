@@ -2,8 +2,4 @@
 node_modules
 package-lock.json
 package.json
-src/teste.js
-src/teste2.js
-src/futureDataBase.js
-src/setAPI_key.js
-src/getAPI_key.js
+server/
