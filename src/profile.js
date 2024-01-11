@@ -31,4 +31,3 @@ const showList = () => {
     }
 }
 profilePic.addEventListener('click' , showList)
-
