@@ -8,18 +8,22 @@
     <link rel="stylesheet" href="src/style/profile.css">
 </head>
 <body>
-    <header class="hello">
-         <h1></h1>
+    <header class="hello" data-background="background">
+         <h1 data-text="texts"></h1>
          <div class="hoursDiv">
-            <span>Hours</span>
-            <span id="hours"></span>
+            <span data-text="texts">Hours</span>
+            <span id="hours" data-text="texts"></span>
          </div>
          <div class="dropdown-list">
              <img alt="Profile_picture" id="profilePic" draggable="false">
-            <div class="test" id="test">
-                <a href="#top">Clear chat</a>
-                <span></span>
-                <a href="#top">Settings</a>
+            <div class="dropdown-list-content" id="test" data-dropList="background">
+                <a href="#top" data-text="texts" >Clear chat</a>
+                <span class="dropdown-list-border" data-dropList="border"></span>
+                <a href="#top" data-text="texts">Settings</a>
+                <span class="dropdown-list-border" data-dropList="border"></span>
+                <button href="#top" id="changeTheme" name="moon">
+                    &#127769
+                </button>
             </div>
          </div>
     </header>

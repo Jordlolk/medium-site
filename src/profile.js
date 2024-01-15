@@ -3,6 +3,7 @@ const profilePic = document.getElementById('profilePic'),
 profileNameHtml = document.getElementById('profileName'),
 profileEmailHtml = document.getElementById('profileEmail'),
 HelloPhrase = document.querySelector('h1'),
+changeTheme = document.getElementById('changeTheme'),
 hoursHtml = document.getElementById('hours')
 let userLoggedIn = JSON.parse(localStorage.getItem('userLoggingIn'))
 
@@ -30,4 +31,56 @@ const showList = () => {
         dropList.style.display = 'none'
     }
 }
+
+let texts = document.querySelectorAll('[data-text="texts"]'),
+dropListBorder = document.querySelectorAll('[data-dropList="border"]'),
+dropListBackground = document.querySelectorAll('[data-dropList="background"]'),
+backgroundColor = document.querySelectorAll('[data-background="background"]')
+console.log(dropListBackground[0]);
+console.log(texts);
+const changeColorText = (array) => {
+    if(array){
+      console.log(array[0].attributes[0]);
+    }
+}
+changeColorText(texts)
+const changeThemeWebSite = () => {
+
+    if(changeTheme.name === 'Moon'){
+      /* '&#127769' */
+      dropListBackground[0].style.borderColor = 'white'
+      backgroundColor.forEach(element => {
+        element.style.backgroundColor = 'black'
+      })
+      dropListBackground.forEach(element => {
+        element.style.backgroundColor = 'black'
+      })
+      dropListBorder.forEach(element => {
+        element.style.backgroundColor = 'white'
+      })
+      texts.forEach(element => {
+        element.style.color = 'white'
+      })
+      changeTheme.innerHTML = '&#127774'
+      changeTheme.name = 'Sun'
+    } 
+    else {
+      dropListBackground[0].style.borderColor = 'black'
+      backgroundColor.forEach(element => {
+        element.style.backgroundColor = 'white'
+      });
+      dropListBackground.forEach(element => {
+        element.style.backgroundColor = 'white'
+      })
+      dropListBorder.forEach(element => {
+        element.style.backgroundColor = 'black'
+      })
+      texts.forEach(element => {
+          element.style.color = 'black'
+      });
+      changeTheme.innerHTML = '&#127769'
+      changeTheme.name = 'Moon'
+    }
+}
 profilePic.addEventListener('click' , showList)
+changeTheme.addEventListener('click' , changeThemeWebSite)
