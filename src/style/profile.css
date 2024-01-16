@@ -16,7 +16,7 @@ header{
   user-select: none;
   background-color: black;
   border-bottom: 2px solid var(--border);
-  padding: 10px;
+  padding: 8px;
   gap: 20px;
   font-size: 14px;
   color: var(--text);
@@ -85,4 +85,32 @@ header{
   background-color: transparent;
   outline: none;
   border: none;
+}
+
+.section{
+  display: flex;
+  width: 100%;
+  padding:  80px 80px 0px 80px;
+  gap: 8px;
+}
+
+.section span{
+  background-color: var(--background);
+  width: 8%;
+  border-radius: 80px;
+}
+
+.main-contentTwo div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.main-contentTwo h3{
+  margin-top: 14px;
+  border-top: 2px solid var(--background);
+  width: 80%;
+  align-content: center;
+  text-align: center;
 }
