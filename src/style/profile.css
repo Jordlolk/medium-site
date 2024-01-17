@@ -5,6 +5,58 @@
   --background : #252627;
   --border: black;
 }
+@media screen and (max-width : 719px) {
+    .hello{
+      font-size: 10px;
+    }
+
+    .timer{
+      scale: 1.2;
+    }
+
+    .hoursDiv span{
+      font-size: 14px;
+    }
+
+    .hello img{
+      height: 40px;
+      width: 40px;
+    }
+
+    .sectionTwo .text{
+      text-align: start;
+      width: 80%;
+      line-height: 18px;
+    }
+
+    .main-content{
+      font-size: 12px;
+    }
+}
+
+@media  screen and (min-width : 720px) {
+  .hello{
+    font-size: 14px;
+  }
+
+  .hoursDiv span{
+    font-size: 14px;
+  }
+
+  .hello img{
+    height: 68px;
+    width: 68px;
+  }
+
+  .sectionTwo .text{
+    text-align: center;
+    width: 50%;
+  }
+
+  .main-content{
+    font-size: 14px;
+  }
+}
 
 header{
   display: flex;
@@ -18,21 +70,25 @@ header{
   border-bottom: 2px solid var(--border);
   padding: 8px;
   gap: 20px;
-  font-size: 14px;
   color: var(--text);
 }
 
 .hello img{
   cursor: pointer;
-  height: 68px;
-  width: 68px;
   border: 2px solid transparent;
-  transition: 0.2s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 
 .hello img:hover{
   border: 2px solid var(--effects);
   border-radius: 70px;
+}
+
+.hoursDiv{
+  gap: 4px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .dropdown-list{
@@ -56,14 +112,7 @@ header{
   justify-content: space-evenly;
 }
 
-.hoursDiv{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.hoursDiv span{
-  font-size: 18px;
-}
+
 .dropdown-list-content a{
   font-size: 14px;
   text-transform: uppercase;
@@ -90,27 +139,47 @@ header{
 .section{
   display: flex;
   width: 100%;
-  padding:  80px 80px 0px 80px;
+  padding:  20px 20px 12px 20px;
   gap: 8px;
+}
+
+.main-content{
+  width: 100%;
+  text-align: start;
+  font-weight: bold;
 }
 
 .section span{
   background-color: var(--background);
-  width: 8%;
+  width: 4%;
   border-radius: 80px;
 }
 
-.main-contentTwo div{
-  display: flex;
+.sectionTwo div:nth-child(1){
   flex-direction: column;
   align-items: center;
+  display: flex;
+  flex-direction: column;
   width: 100%;
 }
 
-.main-contentTwo h3{
-  margin-top: 14px;
+.sectionTwo h3{
   border-top: 2px solid var(--background);
-  width: 80%;
+  width: 50%;
   align-content: center;
   text-align: center;
+}
+
+.sectionTwo .text{
+  line-height: 18px;
+}
+
+.sectionTwoModText{
+  display: flex;
+  gap: 8px;
+}
+
+.sectionTwoModText p:nth-child(2){
+  border-left: 2px solid var(--background);
+  padding-left: 12px;
 }

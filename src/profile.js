@@ -3,6 +3,7 @@ const profilePic = document.getElementById('profilePic'),
 profileNameHtml = document.getElementById('profileName'),
 profileEmailHtml = document.getElementById('profileEmail'),
 HelloPhrase = document.querySelector('h1'),
+textMainContent = document.querySelector('.text'),
 changeTheme = document.getElementById('changeTheme'),
 hoursHtml = document.getElementById('hours')
 let userLoggedIn = JSON.parse(localStorage.getItem('userLoggingIn'))
@@ -84,3 +85,18 @@ const changeThemeWebSite = () => {
 }
 profilePic.addEventListener('click' , showList)
 changeTheme.addEventListener('click' , changeThemeWebSite)
+
+document.addEventListener('DOMContentLoaded', function() {
+  let windowLength = window.innerWidth
+  let textContent = textMainContent.children[0].innerText
+  let textHalfContent = Math.floor(textContent.length/2-1)
+  if(windowLength < 720){
+      textMainContent.children[0].innerHTML = textContent.slice(0 , textHalfContent)
+      let newText = document.createElement('p')
+      newText.innerHTML = textContent.slice(textHalfContent, textContent.length)
+      textMainContent.appendChild(newText)
+      textMainContent.classList.add('sectionTwoModText')
+  } else {
+      textMainContent.classList.remove('sectionTwoModText')
+  } 
+});
