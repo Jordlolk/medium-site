@@ -5,16 +5,19 @@ profileEmailHtml = document.getElementById('profileEmail'),
 HelloPhrase = document.querySelector('h1'),
 textMainContent = document.querySelector('.text'),
 changeTheme = document.getElementById('changeTheme'),
-hoursHtml = document.getElementById('hours')
+hoursHtml = document.getElementById('hours'),
+daysOfTheMonth = document.querySelectorAll('[data-js="days"]'),
+monthHtmlcontent = document.querySelector('[data-month="month"]'),
+menuDays = document.getElementById('menuDays')
 let userLoggedIn = JSON.parse(localStorage.getItem('userLoggingIn'))
+console.log(daysOfTheMonth);
 
-/* Iniciate personalizing */
 function updateTime(){
   let hours = new Date()
-let formattedHours = hours.getHours().toString().padStart(2, '0');
-let formattedMinutes = hours.getMinutes().toString().padStart(2, '0');
-let formattedSeconds = hours.getSeconds().toString().padStart(2, '0');
-hoursHtml.innerHTML = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`
+  let formattedHours = hours.getHours().toString().padStart(2, '0');
+  let formattedMinutes = hours.getMinutes().toString().padStart(2, '0');
+  let formattedSeconds = hours.getSeconds().toString().padStart(2, '0');
+  hoursHtml.innerHTML = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`
 }
 setInterval(updateTime , 1000)
 updateTime()
@@ -37,18 +40,16 @@ let texts = document.querySelectorAll('[data-text="texts"]'),
 dropListBorder = document.querySelectorAll('[data-dropList="border"]'),
 dropListBackground = document.querySelectorAll('[data-dropList="background"]'),
 backgroundColor = document.querySelectorAll('[data-background="background"]')
-console.log(dropListBackground[0]);
-console.log(texts);
+
 const changeColorText = (array) => {
     if(array){
       console.log(array[0].attributes[0]);
     }
 }
-changeColorText(texts)
+
 const changeThemeWebSite = () => {
 
     if(changeTheme.name === 'Moon'){
-      /* '&#127769' */
       dropListBackground[0].style.borderColor = 'white'
       backgroundColor.forEach(element => {
         element.style.backgroundColor = 'black'
@@ -100,3 +101,35 @@ document.addEventListener('DOMContentLoaded', function() {
       textMainContent.classList.remove('sectionTwoModText')
   } 
 });
+
+let data = new Date()
+
+let yearMonthDay = [data.getFullYear() , 0, 1]
+let firstDay = new Date(yearMonthDay[0] , yearMonthDay[1] , yearMonthDay[2])
+let lastDay = new Date(yearMonthDay[0] , yearMonthDay[1], yearMonthDay[2]+30)
+const days = []
+for(let day = 1 ; day <= lastDay.getDate() ; day++){
+  days.push(day)
+}
+const monthArray = [
+  'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+  'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+];
+
+const month30days = ['Abril' , 'Junho' , 'Setembro' , 'Dezembro']
+
+for(let months = 0 ; months < monthArray.length ; months++){
+  let currentMonth = monthArray[firstDay.getMonth()+months]
+  let td = document.createElement('td')
+  td.setAttribute('data-js' , 'days')
+  if(month30days.includes(currentMonth) && data.getFullYear() % 4 === 0){
+    days.pop()
+    monthHtmlcontent.innerHTML =  `${month30days[currentMonth]}`
+    td.innerHTML =  days[months]
+    days.push(31)
+  } else {
+    monthHtmlcontent.innerHTML = `${monthArray[data.getMonth()]}`
+    td.innerHTML = days[months]
+  }
+  menuDays.appendChild(td)
+}

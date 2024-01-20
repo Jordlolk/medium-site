@@ -44,8 +44,8 @@
   }
 
   .hello img{
-    height: 68px;
-    width: 68px;
+    height: 54px;
+    width: 54px;
   }
 
   .sectionTwo .text{
@@ -166,12 +166,16 @@ header{
 .sectionTwo h3{
   border-top: 2px solid var(--background);
   width: 50%;
+  padding-top: 4px;
   align-content: center;
   text-align: center;
 }
 
 .sectionTwo .text{
   line-height: 18px;
+  text-align: start;
+  padding: 8px;
+  border-bottom: var(--background) 2px solid;
 }
 
 .sectionTwoModText{
@@ -182,4 +186,35 @@ header{
 .sectionTwoModText p:nth-child(2){
   border-left: 2px solid var(--background);
   padding-left: 12px;
+}
+
+table{
+  margin: 14px auto;
+  border-collapse: collapse;
+  background-color: var(--background);
+}
+
+.calendar-content{
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+th{
+  color: var(--text);
+}
+
+td{
+  color: var(--text);
+}
+
+th, td {
+  border: 2px solid var(--text);
+  padding: 4px;
+  text-align: center;
+}
+
+th {
+  background-color: var(--effects);
 }
