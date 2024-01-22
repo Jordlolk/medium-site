@@ -10,7 +10,6 @@ daysOfTheMonth = document.querySelectorAll('[data-js="days"]'),
 monthHtmlcontent = document.querySelector('[data-month="month"]'),
 menuDays = document.getElementById('menuDays')
 let userLoggedIn = JSON.parse(localStorage.getItem('userLoggingIn'))
-console.log(daysOfTheMonth);
 
 function updateTime(){
   let hours = new Date()
@@ -27,15 +26,21 @@ function capitalize(str) {
 
 HelloPhrase.innerHTML = `Hello ${capitalize(userLoggedIn.username)}👋`
 profilePic.src = userLoggedIn.profile
-const showList = () => {
-  const dropList = document.getElementById('test')
-    if(dropList.style.display === 'none'){
-        dropList.style.display = 'flex'
-    }else {
-        dropList.style.display = 'none'
-    }
-}
 
+const dropList = document.getElementById('test')
+const hideList = () => {
+  dropList.style.display = 'none';
+};
+const showList = () => {
+  let computedStyle = window.getComputedStyle(dropList)
+    if(computedStyle.display === 'none'){
+        dropList.style.display = 'flex'
+      }
+}
+profilePic.addEventListener('mouseenter' , showList)
+dropList.addEventListener('mouseleave' , () => {
+  hideList()
+})
 let texts = document.querySelectorAll('[data-text="texts"]'),
 dropListBorder = document.querySelectorAll('[data-dropList="border"]'),
 dropListBackground = document.querySelectorAll('[data-dropList="background"]'),
@@ -84,52 +89,83 @@ const changeThemeWebSite = () => {
       changeTheme.name = 'Moon'
     }
 }
-profilePic.addEventListener('click' , showList)
+
 changeTheme.addEventListener('click' , changeThemeWebSite)
 
 document.addEventListener('DOMContentLoaded', function() {
   let windowLength = window.innerWidth
   let textContent = textMainContent.children[0].innerText
   let textHalfContent = Math.floor(textContent.length/2-1)
+  let appendedElement ;
   if(windowLength < 720){
       textMainContent.children[0].innerHTML = textContent.slice(0 , textHalfContent)
       let newText = document.createElement('p')
+      appendedElement = newText
       newText.innerHTML = textContent.slice(textHalfContent, textContent.length)
       textMainContent.appendChild(newText)
       textMainContent.classList.add('sectionTwoModText')
   } else {
       textMainContent.classList.remove('sectionTwoModText')
+      if (appendedElement  && textMainContent.contains(appendedElement)){
+          textMainContent.removeChild(appendedElement)
+      }
   } 
 });
 
-let data = new Date()
+//--------------------------------------------------------
+document.addEventListener("DOMContentLoaded", function () {
+  const calendarContainer = document.querySelector(".calendar-content");
 
-let yearMonthDay = [data.getFullYear() , 0, 1]
-let firstDay = new Date(yearMonthDay[0] , yearMonthDay[1] , yearMonthDay[2])
-let lastDay = new Date(yearMonthDay[0] , yearMonthDay[1], yearMonthDay[2]+30)
-const days = []
-for(let day = 1 ; day <= lastDay.getDate() ; day++){
-  days.push(day)
-}
-const monthArray = [
-  'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
-  'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
-];
+  function createCalendar(year, month) {
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const firstDay = new Date(year, month, 1).getDay();
 
-const month30days = ['Abril' , 'Junho' , 'Setembro' , 'Dezembro']
+    const monthNames = [
+      'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+      'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+    ];
 
-for(let months = 0 ; months < monthArray.length ; months++){
-  let currentMonth = monthArray[firstDay.getMonth()+months]
-  let td = document.createElement('td')
-  td.setAttribute('data-js' , 'days')
-  if(month30days.includes(currentMonth) && data.getFullYear() % 4 === 0){
-    days.pop()
-    monthHtmlcontent.innerHTML =  `${month30days[currentMonth]}`
-    td.innerHTML =  days[months]
-    days.push(31)
-  } else {
-    monthHtmlcontent.innerHTML = `${monthArray[data.getMonth()]}`
-    td.innerHTML = days[months]
+    const table = document.querySelector('.calendar')
+    const headerRow = table.insertRow();
+
+    for (let day = 0; day < 7; day++) {
+      const th = document.createElement("th");
+      th.textContent = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'][day];
+      headerRow.appendChild(th);
+    }
+
+    let dayCounter = 1;
+
+    for (let i = 0; i < 5; i++) {
+      const row = table.insertRow();
+
+      for (let j = 0; j < 7; j++) {
+        const cell = row.insertCell();
+
+        if (i === 0 && j < firstDay) {
+          // Empty cells before the first day
+          continue;
+        }
+
+        if (dayCounter > daysInMonth) {
+          // No more days in the month, break the loop
+          break;
+        }
+        row.classList.add('week')
+        cell.classList.add('days')
+        cell.textContent = dayCounter;
+        cell.addEventListener("click", handleClick);
+
+        dayCounter++;
+      }
+    }
+    
+    calendarContainer.innerHTML = '';
+    calendarContainer.appendChild(table);
   }
-  menuDays.appendChild(td)
+  const currentDate = new Date();
+  createCalendar(currentDate.getFullYear(), currentDate.getMonth());
+});
+const handleClick = (e) => {
+    console.log(e);
 }
