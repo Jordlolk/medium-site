@@ -201,6 +201,24 @@ table{
   margin-top: 10px;
 }
 
+.button-menu{
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.button-menu button{
+  background-color: transparent;
+  border: none;
+  width: 40px;
+  height: 20px;
+  font-weight: bolder;
+  font-size: 14px;
+}
+
+
 .week{
   background-color: var(--background);
 }
@@ -213,6 +231,10 @@ table{
 .days:hover{
   background-color: var(--text);
   color: black;
+}
+
+.yesterDays{
+  color: rgba(255, 255, 255, 0.46);
 }
 
 th{

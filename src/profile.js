@@ -6,6 +6,7 @@ HelloPhrase = document.querySelector('h1'),
 textMainContent = document.querySelector('.text'),
 changeTheme = document.getElementById('changeTheme'),
 hoursHtml = document.getElementById('hours'),
+menuDateChange = document.querySelectorAll('.calendar-button'),
 daysOfTheMonth = document.querySelectorAll('[data-js="days"]'),
 monthHtmlcontent = document.querySelector('[data-month="month"]'),
 menuDays = document.getElementById('menuDays')
@@ -28,9 +29,6 @@ HelloPhrase.innerHTML = `Hello ${capitalize(userLoggedIn.username)}👋`
 profilePic.src = userLoggedIn.profile
 
 const dropList = document.getElementById('test')
-const hideList = () => {
-  dropList.style.display = 'none';
-};
 const showList = () => {
   let computedStyle = window.getComputedStyle(dropList)
     if(computedStyle.display === 'none'){
@@ -39,8 +37,9 @@ const showList = () => {
 }
 profilePic.addEventListener('mouseenter' , showList)
 dropList.addEventListener('mouseleave' , () => {
-  hideList()
+  dropList.style.display = 'none';
 })
+
 let texts = document.querySelectorAll('[data-text="texts"]'),
 dropListBorder = document.querySelectorAll('[data-dropList="border"]'),
 dropListBackground = document.querySelectorAll('[data-dropList="background"]'),
@@ -117,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const calendarContainer = document.querySelector(".calendar-content");
 
   function createCalendar(year, month) {
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const daysInMonth = new Date(year, month+1, 0).getDate();
     const firstDay = new Date(year, month, 1).getDay();
 
     const monthNames = [
@@ -143,29 +142,42 @@ document.addEventListener("DOMContentLoaded", function () {
         const cell = row.insertCell();
 
         if (i === 0 && j < firstDay) {
-          // Empty cells before the first day
+          if(monthNames[month] === 'Janeiro'){
+            cell.textContent = new Date(year, month ,0).getDate()
+            cell.classList.add('yesterDays')
+          }
           continue;
         }
-
+        
         if (dayCounter > daysInMonth) {
           // No more days in the month, break the loop
+          cell.innerText = new Date(year , month+1 , 1).getDate()
+          cell.classList.add('yesterDays')
+          
           break;
         }
+        monthHtmlcontent.innerHTML = monthNames[month]
+        cell.textContent = dayCounter;
         row.classList.add('week')
         cell.classList.add('days')
-        cell.textContent = dayCounter;
         cell.addEventListener("click", handleClick);
 
         dayCounter++;
       }
     }
-    
-    calendarContainer.innerHTML = '';
     calendarContainer.appendChild(table);
   }
   const currentDate = new Date();
   createCalendar(currentDate.getFullYear(), currentDate.getMonth());
 });
-const handleClick = (e) => {
-    console.log(e);
+
+const handleClick = () => {
+
 }
+const nextDate = () => {
+  
+}
+menuDateChange.forEach(button => {
+    button.addEventListener('click' , nextDate)
+})
+
