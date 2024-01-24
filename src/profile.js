@@ -10,7 +10,7 @@ menuDateChange = document.querySelectorAll('.calendar-button'),
 daysOfTheMonth = document.querySelectorAll('[data-js="days"]'),
 monthHtmlcontent = document.querySelector('[data-month="month"]'),
 menuDays = document.getElementById('menuDays')
-let userLoggedIn = JSON.parse(localStorage.getItem('userLoggingIn'))
+let userLoggedIn = JSON.parse(localStorage.getItem('loggedUser'))
 
 function updateTime(){
   let hours = new Date()
@@ -25,8 +25,8 @@ function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-HelloPhrase.innerHTML = `Hello ${capitalize(userLoggedIn.username)}👋`
-profilePic.src = userLoggedIn.profile
+HelloPhrase.innerHTML = `Hello ${capitalize(userLoggedIn[0].username)}👋`
+profilePic.src = userLoggedIn[0].profile
 
 const dropList = document.getElementById('test')
 const showList = () => {
@@ -112,10 +112,11 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 //--------------------------------------------------------
-document.addEventListener("DOMContentLoaded", function () {
-  const calendarContainer = document.querySelector(".calendar-content");
+const calendarContainer = document.querySelector(".calendar-content");
+const table = document.querySelector('.calendar') 
+const currentDate = new Date();
 
-  function createCalendar(year, month) {
+function createCalendar(year, month) {
     const daysInMonth = new Date(year, month+1, 0).getDate();
     const firstDay = new Date(year, month, 1).getDay();
 
@@ -124,7 +125,6 @@ document.addEventListener("DOMContentLoaded", function () {
       'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
     ];
 
-    const table = document.querySelector('.calendar')
     const headerRow = table.insertRow();
 
     for (let day = 0; day < 7; day++) {
@@ -142,18 +142,23 @@ document.addEventListener("DOMContentLoaded", function () {
         const cell = row.insertCell();
 
         if (i === 0 && j < firstDay) {
-          if(monthNames[month] === 'Janeiro'){
-            cell.textContent = new Date(year, month ,0).getDate()
-            cell.classList.add('yesterDays')
-          }
+          //dia de ontem    
+          const lastMonth = month - 1 < 0 ? 11 : month - 1;
+          const lastMonthYear = month - 1 < 0 ? year - 1 : year;
+          const lastMonthDays = new Date(lastMonthYear, lastMonth + 1, 0).getDate();
+          const dayOfLastMonth = lastMonthDays - (firstDay - j) + 1;
+          cell.innerText = dayOfLastMonth
+          cell.classList.add('yesterDays')
           continue;
         }
         
         if (dayCounter > daysInMonth) {
           // No more days in the month, break the loop
-          cell.innerText = new Date(year , month+1 , 1).getDate()
+          const nextMonth = month + 1 > 11 ? 1 : month + 1;
+          const nextMonthYear = month + 1 > 11 ? year + 1 : year;
+          const dayOfnextMonth = new Date(nextMonthYear, nextMonth, 1).getDate();
+          cell.innerText = dayOfnextMonth
           cell.classList.add('yesterDays')
-          
           break;
         }
         monthHtmlcontent.innerHTML = monthNames[month]
@@ -166,16 +171,24 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
     calendarContainer.appendChild(table);
-  }
-  const currentDate = new Date();
-  createCalendar(currentDate.getFullYear(), currentDate.getMonth());
-});
-
-const handleClick = () => {
-
 }
-const nextDate = () => {
-  
+document.addEventListener("DOMContentLoaded", function () {
+  createCalendar(currentDate.getFullYear(), currentDate.getMonth())
+});
+const handleClick = (e) => {
+  console.log(e.target);
+}
+let count = 1
+const nextDate = (e) => {
+  if(e.target.innerText === ">"){
+      currentDate.setMonth(currentDate.getMonth()+1)
+  } else {
+      currentDate.setMonth(currentDate.getMonth()-1)
+  }
+  let year = currentDate.getFullYear()
+  let month = currentDate.getMonth()
+  table.innerHTML = ''
+  createCalendar(year ,month)
 }
 menuDateChange.forEach(button => {
     button.addEventListener('click' , nextDate)
