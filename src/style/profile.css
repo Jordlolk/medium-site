@@ -195,6 +195,24 @@ table{
   width: 50%;
 }
 
+th{
+  color: var(--text);
+}
+
+td{
+  color: var(--text);
+}
+
+th, td {
+  border: 2px solid var(--text);
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: var(--effects);
+}
+
 .calendar-content{
   text-align: center;
   font-size: 14px;
@@ -215,9 +233,15 @@ table{
   width: 40px;
   height: 20px;
   font-weight: bolder;
+  border-radius: 40px;
   font-size: 14px;
+  transition: 0.3s ease-in-out;
 }
 
+.button-menu button:hover{
+  background-color: rgba(255, 255, 255, 0.558);
+  color: black;
+}
 
 .week{
   background-color: var(--background);
@@ -233,24 +257,41 @@ table{
   color: black;
 }
 
-.yesterDays{
+.yesterDays , .nextMonth{
   color: rgba(255, 255, 255, 0.46);
+  user-select: none;
+  transition: 0.4s ease-in-out;
 }
 
-th{
-  color: var(--text);
+.yesterDays:hover , .nextMonth:hover{
+  color: white;
+  background-color: black;
 }
 
-td{
-  color: var(--text);
+.eventDiv{
+  flex-direction: column; 
+  align-items: center; 
+  display: flex;
 }
 
-th, td {
-  border: 2px solid var(--text);
-  padding: 8px;
-  text-align: center;
+.eventDivInfo{
+  gap: 10px;
+  display: flex;
 }
 
-th {
-  background-color: var(--effects);
+.eventForm{
+  display: flex; 
+}
+
+.eventInputs{
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+}
+
+.eventInputs input{
+  padding: 2px;
+}
+.eventInputs input::placeholder{
+ padding: 2px;
 }

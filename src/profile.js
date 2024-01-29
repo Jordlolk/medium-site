@@ -14,15 +14,16 @@ let userLoggedIn = JSON.parse(localStorage.getItem('loggedUser'))
 
 function updateTime(){
   let hours = new Date()
-  let formattedHours = hours.getHours().toString().padStart(2, '0');
-  let formattedMinutes = hours.getMinutes().toString().padStart(2, '0');
-  let formattedSeconds = hours.getSeconds().toString().padStart(2, '0');
+  let formattedHours = hours.getHours().toString().padStart(2, '0')
+  let formattedMinutes = hours.getMinutes().toString().padStart(2, '0')
+  let formattedSeconds = hours.getSeconds().toString().padStart(2, '0')
   hoursHtml.innerHTML = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`
 }
 setInterval(updateTime , 1000)
 updateTime()
+
 function capitalize(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
+  return str.charAt(0).toUpperCase() + str.slice(1)
 }
 
 HelloPhrase.innerHTML = `Hello ${capitalize(userLoggedIn[0].username)}👋`
@@ -37,7 +38,7 @@ const showList = () => {
 }
 profilePic.addEventListener('mouseenter' , showList)
 dropList.addEventListener('mouseleave' , () => {
-  dropList.style.display = 'none';
+  dropList.style.display = 'none'
 })
 
 let texts = document.querySelectorAll('[data-text="texts"]'),
@@ -47,7 +48,7 @@ backgroundColor = document.querySelectorAll('[data-background="background"]')
 
 const changeColorText = (array) => {
     if(array){
-      console.log(array[0].attributes[0]);
+      console.log(array[0].attributes[0])
     }
 }
 
@@ -74,7 +75,7 @@ const changeThemeWebSite = () => {
       dropListBackground[0].style.borderColor = 'black'
       backgroundColor.forEach(element => {
         element.style.backgroundColor = 'white'
-      });
+      })
       dropListBackground.forEach(element => {
         element.style.backgroundColor = 'white'
       })
@@ -83,19 +84,19 @@ const changeThemeWebSite = () => {
       })
       texts.forEach(element => {
           element.style.color = 'black'
-      });
+      })
       changeTheme.innerHTML = '&#127769'
       changeTheme.name = 'Moon'
     }
 }
 
 changeTheme.addEventListener('click' , changeThemeWebSite)
-
+//Editing mobile text
 document.addEventListener('DOMContentLoaded', function() {
   let windowLength = window.innerWidth
   let textContent = textMainContent.children[0].innerText
   let textHalfContent = Math.floor(textContent.length/2-1)
-  let appendedElement ;
+  let appendedElement 
   if(windowLength < 720){
       textMainContent.children[0].innerHTML = textContent.slice(0 , textHalfContent)
       let newText = document.createElement('p')
@@ -109,75 +110,99 @@ document.addEventListener('DOMContentLoaded', function() {
           textMainContent.removeChild(appendedElement)
       }
   } 
-});
+})
 
-//--------------------------------------------------------
-const calendarContainer = document.querySelector(".calendar-content");
+//-----------------------Create Calendar-------------------------------
+
+const calendarContainer = document.querySelector(".calendar-content")
 const table = document.querySelector('.calendar') 
-const currentDate = new Date();
-
+const currentDate = new Date()
+const daysWeeks = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb']
+const monthNames = [
+  'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+  'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+]
+let dateSelected = null
 function createCalendar(year, month) {
-    const daysInMonth = new Date(year, month+1, 0).getDate();
-    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month+1, 0).getDate()
+    const firstDay = new Date(year, month, 1).getDay()
 
-    const monthNames = [
-      'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
-      'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
-    ];
 
-    const headerRow = table.insertRow();
-
-    for (let day = 0; day < 7; day++) {
-      const th = document.createElement("th");
-      th.textContent = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'][day];
-      headerRow.appendChild(th);
+    const headerRow = table.insertRow()
+    const nextMonth = month + 1 > 11 ? 1 : month + 1
+    const nextMonthYear = month + 1 > 11 ? year + 1 : year
+    const lastMonth = month - 1 < 0 ? 11 : month - 1
+    const lastMonthYear = month - 1 < 0 ? year - 1 : year
+    for (let day = 0 ; day < 7 ;day++) {
+      const th = document.createElement("th")
+      th.textContent = daysWeeks[day]
+      headerRow.appendChild(th)
     }
 
-    let dayCounter = 1;
+    let dayCounter = 1
 
-    for (let i = 0; i < 5; i++) {
-      const row = table.insertRow();
+    for (let i = 0 ; i < 5 ; i++) {
+      const row = table.insertRow()
 
-      for (let j = 0; j < 7; j++) {
-        const cell = row.insertCell();
+      for (let j = 0 ; j < 7 ; j++) {
+        const cell = row.insertCell()
 
         if (i === 0 && j < firstDay) {
-          //dia de ontem    
-          const lastMonth = month - 1 < 0 ? 11 : month - 1;
-          const lastMonthYear = month - 1 < 0 ? year - 1 : year;
-          const lastMonthDays = new Date(lastMonthYear, lastMonth + 1, 0).getDate();
-          const dayOfLastMonth = lastMonthDays - (firstDay - j) + 1;
+          
+          const lastMonthDays = new Date(lastMonthYear, lastMonth + 1, 0).getDate()
+          const dayOfLastMonth = lastMonthDays - (firstDay - j) + 1
           cell.innerText = dayOfLastMonth
           cell.classList.add('yesterDays')
-          continue;
+          cell.addEventListener('click' , handleClick)
+          continue
         }
         
-        if (dayCounter > daysInMonth) {
+        if (dayCounter > 31) {
           // No more days in the month, break the loop
-          const nextMonth = month + 1 > 11 ? 1 : month + 1;
-          const nextMonthYear = month + 1 > 11 ? year + 1 : year;
-          const dayOfnextMonth = new Date(nextMonthYear, nextMonth, 1).getDate();
+          const dayOfnextMonth = new Date(nextMonthYear, nextMonth, 1).getDate()
           cell.innerText = dayOfnextMonth
-          cell.classList.add('yesterDays')
-          break;
+          cell.classList.add('nextMonth')
+          cell.addEventListener('click' , handleClick)
+          break
         }
         monthHtmlcontent.innerHTML = monthNames[month]
-        cell.textContent = dayCounter;
+        cell.textContent = dayCounter
         row.classList.add('week')
         cell.classList.add('days')
-        cell.addEventListener("click", handleClick);
-
-        dayCounter++;
+        cell.addEventListener("click", handleClick)
+        function handleClick(cellSelected){
+          let cell = cellSelected.target 
+          let cellClass = cellSelected.target.classList[0]
+         switch(cellClass){
+           case 'days':
+            dateSelected = new Date(year , month , cell.innerText)
+            console.log(dateSelected.getDate() , dateSelected.getMonth() , dateSelected.getDay());
+            creatingEvent(dateSelected.getDate() , dateSelected.getMonth() , dateSelected.getDay())
+            break;
+           case 'yesterDays':
+            dateSelected = new Date(lastMonthYear , lastMonth , cell.innerText)
+            console.log(dateSelected);
+            table.innerHTML = ''
+            createCalendar(lastMonthYear , lastMonth)
+            break
+            default :
+            dateSelected = new Date(nextMonthYear , nextMonth , cell.innerText)
+            table.innerHTML = ''
+            createCalendar(nextMonthYear , nextMonth)
+            console.log('d');
+            break;
+         }
+        }
+        dayCounter++
       }
     }
-    calendarContainer.appendChild(table);
+    calendarContainer.appendChild(table)
 }
 document.addEventListener("DOMContentLoaded", function () {
   createCalendar(currentDate.getFullYear(), currentDate.getMonth())
-});
-const handleClick = (e) => {
-  console.log(e.target);
-}
+})
+
+//Change calendar
 let count = 1
 const nextDate = (e) => {
   if(e.target.innerText === ">"){
@@ -194,3 +219,6 @@ menuDateChange.forEach(button => {
     button.addEventListener('click' , nextDate)
 })
 
+const creatingEvent = (day , month ,dayWeek) => {
+    console.log(day , monthNames[month] , daysWeeks[dayWeek]);
+}
