@@ -11,7 +11,7 @@
     }
 
     .timer{
-      scale: 1.2;
+      transform: scale(1.2)
     }
 
     .hoursDiv span{
@@ -27,6 +27,13 @@
       text-align: start;
       width: 80%;
       line-height: 18px;
+    }
+    .main-sectionCalendar{
+      flex-direction: column;
+      gap: 12px;
+    }
+    .eventForm{
+      width: 80%;
     }
 
     .main-content{
@@ -55,6 +62,15 @@
 
   .main-content{
     font-size: 14px;
+  }
+
+  .main-sectionCalendar{
+    flex-direction: row;
+    gap: 40px;
+  }
+
+  .eventForm{
+    width: 40%;
   }
 }
 
@@ -213,6 +229,34 @@ th {
   background-color: var(--effects);
 }
 
+.main-sectionCalendar{
+  display: flex;
+  align-items: center;
+  margin: auto;
+  justify-content: center;
+}
+
+.listCalendar{
+  background-color: var(--background);
+  padding: 20px;
+  font-size: 14px;
+  border-radius: 14px;
+}
+
+.listCalendar p{
+  padding: 4px;
+  border-bottom: 2px var(--effects) solid;
+}
+.listCalendar ul{
+  padding: 4px;
+  color: var(--text);
+}
+.listCalendar li{
+  margin-left: 12px;
+}
+.listCalendar i{
+  margin-left: 14px;
+}
 .calendar-content{
   text-align: center;
   font-size: 14px;
@@ -272,26 +316,49 @@ th {
   flex-direction: column; 
   align-items: center; 
   display: flex;
+  margin: auto;
+  gap: 4px;
+  padding: 0 0  40px;
 }
 
 .eventDivInfo{
-  gap: 10px;
+  margin: 12px;
+  gap: 4px;
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 14px;
+  border-bottom: 2px solid var(--effects);
 }
 
 .eventForm{
-  display: flex; 
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  border: var(--text) 2px solid;
+  padding: 14px;
+  align-items: center;
+  background-color: var(--background);
 }
 
 .eventInputs{
   display: flex; 
   flex-direction: column;
   justify-content: center;
+  gap: 8px;
 }
 
 .eventInputs input{
-  padding: 2px;
+  border: 2px solid var(--text);
+  padding: 8px;
+  background-color: var(--effects);
+  border-radius: 10px;
+  outline: none;
+  color: var(--text);
 }
+
 .eventInputs input::placeholder{
- padding: 2px;
+ padding: 4px;
+ font-size: 12px;
+ color: rgba(0, 0, 0, 0.644);
 }

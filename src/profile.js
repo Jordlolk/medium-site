@@ -122,17 +122,18 @@ const monthNames = [
   'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
   'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
 ]
+let eventData = null
 let dateSelected = null
 function createCalendar(year, month) {
     const daysInMonth = new Date(year, month+1, 0).getDate()
     const firstDay = new Date(year, month, 1).getDay()
-
 
     const headerRow = table.insertRow()
     const nextMonth = month + 1 > 11 ? 1 : month + 1
     const nextMonthYear = month + 1 > 11 ? year + 1 : year
     const lastMonth = month - 1 < 0 ? 11 : month - 1
     const lastMonthYear = month - 1 < 0 ? year - 1 : year
+
     for (let day = 0 ; day < 7 ;day++) {
       const th = document.createElement("th")
       th.textContent = daysWeeks[day]
@@ -177,7 +178,8 @@ function createCalendar(year, month) {
            case 'days':
             dateSelected = new Date(year , month , cell.innerText)
             console.log(dateSelected.getDate() , dateSelected.getMonth() , dateSelected.getDay());
-            creatingEvent(dateSelected.getDate() , dateSelected.getMonth() , dateSelected.getDay())
+            eventData = [dateSelected.getMonth() , dateSelected.getDate() , dateSelected.getDay()]
+            creatingEvent(cell)
             break;
            case 'yesterDays':
             dateSelected = new Date(lastMonthYear , lastMonth , cell.innerText)
@@ -219,6 +221,13 @@ menuDateChange.forEach(button => {
     button.addEventListener('click' , nextDate)
 })
 
-const creatingEvent = (day , month ,dayWeek) => {
-    console.log(day , monthNames[month] , daysWeeks[dayWeek]);
+let clickedDate = document.querySelector('.eventDivInfo')
+
+const creatingEvent = (e) => {
+    console.log(e);
+    console.log(eventData[0] , eventData[1] , eventData[2]);
+    let monthName = monthNames[eventData[0]]
+    let dayName = daysWeeks[eventData[2]]
+    clickedDate.children[1].innerHTML = `${monthName}:${dayName}-${eventData[1]}`
 }
+

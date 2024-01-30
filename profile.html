@@ -75,30 +75,36 @@
                 </div>
             </div>
         </section>
-        <section class="calendar-content">  
-            <h3>Calendar</h3>
-            <div class="button-menu">
-                <button class="calendar-button"> < </button>
-                <span data-month="month"></span>
-                <button class="calendar-button"> > </button>
+        <section class="main-sectionCalendar">
+            <section class="calendar-content">  
+                <h3>Calendar</h3>
+                <div class="button-menu">
+                    <button class="calendar-button"> < </button>
+                    <span data-month="month"></span>
+                    <button class="calendar-button"> > </button>
+                </div>
+                <table class="calendar">
+                </table>
+            </section>
+            <div class="listCalendar">
+                <p>Things the calendar does!</p>
+                <ul>
+                    <li>Save a Event</li>
+                    <i>Once clicked</i>
+                </ul>
             </div>
-            <table class="calendar">
-            </table>
         </section>
         <div class="eventDiv">
-            <div class="eventDivInfo">
-                <p>Data</p>
-                <p>Dia</p>
-                <p>Dia</p>            
-            </div>
             <div class="eventForm">
-                <img src="public/img/profile_standardImg.png" alt="img" style="width: 60px; height: 60px;">
+                <div class="eventDivInfo">
+                    <p>Dia Selecionado:</p>
+                    <p></p>       
+                </div>
                 <div class="eventInputs">
-                    <input type="text" name="name" id="" placeholder="Evento">
-                    <input type="text" name="" id="" placeholder="Evento">
+                    <input type="text" name="name" id="" placeholder="Digite nome do evento...">
                 </div>
             </div>
-        </div>
+        </div>  
     </main>
     <script type="module" src="./src/profile.js"></script>
 </body>
