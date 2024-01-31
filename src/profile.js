@@ -11,7 +11,7 @@ daysOfTheMonth = document.querySelectorAll('[data-js="days"]'),
 monthHtmlcontent = document.querySelector('[data-month="month"]'),
 menuDays = document.getElementById('menuDays')
 let userLoggedIn = JSON.parse(localStorage.getItem('loggedUser'))
-
+console.log(changeTheme);
 function updateTime(){
   let hours = new Date()
   let formattedHours = hours.getHours().toString().padStart(2, '0')
@@ -45,12 +45,6 @@ let texts = document.querySelectorAll('[data-text="texts"]'),
 dropListBorder = document.querySelectorAll('[data-dropList="border"]'),
 dropListBackground = document.querySelectorAll('[data-dropList="background"]'),
 backgroundColor = document.querySelectorAll('[data-background="background"]')
-
-const changeColorText = (array) => {
-    if(array){
-      console.log(array[0].attributes[0])
-    }
-}
 
 const changeThemeWebSite = () => {
 
