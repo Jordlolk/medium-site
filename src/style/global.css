@@ -13,8 +13,8 @@
 }
 
 body{
-  background: linear-gradient(to right, rgb(0, 0, 0) ,
-   rgb(12, 228, 203));
+  background: linear-gradient(to right, rgb(0, 139, 123) ,
+   rgb(0, 197, 174) 50%);
 }
 
 button{

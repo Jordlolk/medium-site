@@ -55,6 +55,10 @@
     width: 54px;
   }
 
+  .section span{
+    width: 1%;
+  }
+
   .sectionTwo .text{
     text-align: center;
     width: 50%;
@@ -159,7 +163,7 @@ header{
   display: flex;
   width: 100%;
   padding:  20px 20px 12px 20px;
-  gap: 8px;
+  gap: 28px;
 }
 
 .main-content{
@@ -170,8 +174,18 @@ header{
 
 .section span{
   background-color: var(--background);
-  width: 1%;
   border-radius: 40px;
+}
+
+.text-top p{
+  padding: 12px;
+  text-align: justify;
+  border-radius: 20px;
+  background-color: var(--background);
+}
+
+.text-top h2{
+  margin: 8px;
 }
 
 .sectionTwo div:nth-child(1){
@@ -185,6 +199,7 @@ header{
 .sectionTwo h3{
   border-top: 2px solid var(--background);
   width: 50%;
+  color: var(--border);
   padding-top: 4px;
   align-content: center;
   text-align: center;
@@ -198,16 +213,10 @@ header{
 
 .text p{
   padding: 8px;
-  border-radius: 8px;
-  background-color: var(--background);
+  color: var(--border);
+  text-align: center;
+  border-radius: 20px;
 }
-
-.sectionTwoModText{
-  display: flex;
-  gap: 8px;
-}
-
-
 
 table{
   margin: 14px auto;
@@ -263,9 +272,12 @@ th {
   margin-left: 14px;
 }
 .calendar-content{
+  background-color: var(--background);
+  padding: 4px;
+  border-radius: 20px;
   text-align: center;
   font-size: 14px;
-  margin-top: 10px;
+  margin-top: 12px;
 }
 
 .button-menu{
@@ -273,9 +285,13 @@ th {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 12px;
 }
-
+.button-menu span{
+  color: var(--text);
+  padding-top: 2px;
+  border-top: 2px var(--effects) solid;
+}
 .button-menu button{
   background-color: transparent;
   border: none;
