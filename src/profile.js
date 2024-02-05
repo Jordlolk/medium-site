@@ -10,8 +10,10 @@ menuDateChange = document.querySelectorAll('.calendar-button'),
 daysOfTheMonth = document.querySelectorAll('[data-js="days"]'),
 monthHtmlcontent = document.querySelector('[data-month="month"]'),
 menuDays = document.getElementById('menuDays')
-let userLoggedIn = JSON.parse(localStorage.getItem('loggedUser'))
-console.log(changeTheme);
+let userLoggedIn = JSON.parse(localStorage.getItem('loggedUser')),
+clickedDate = document.querySelector('.eventDivInfo'),
+clickedDateDiv = document.querySelector('.eventForm')
+
 function updateTime(){
   let hours = new Date()
   let formattedHours = hours.getHours().toString().padStart(2, '0')
@@ -173,6 +175,8 @@ function createCalendar(year, month) {
             dateSelected = new Date(year , month , cell.innerText)
             console.log(dateSelected.getDate() , dateSelected.getMonth() , dateSelected.getDay());
             eventData = [dateSelected.getMonth() , dateSelected.getDate() , dateSelected.getDay()]
+            console.log(clickedDateDiv);
+            callCreateEvent()
             creatingEvent(cell)
             break;
            case 'yesterDays':
@@ -215,13 +219,17 @@ menuDateChange.forEach(button => {
     button.addEventListener('click' , nextDate)
 })
 
-let clickedDate = document.querySelector('.eventDivInfo')
+function callCreateEvent(){
+    return
+}
 
 const creatingEvent = (e) => {
-    console.log(e);
     console.log(eventData[0] , eventData[1] , eventData[2]);
     let monthName = monthNames[eventData[0]]
     let dayName = daysWeeks[eventData[2]]
-    clickedDate.children[1].innerHTML = `${monthName}:${dayName}-${eventData[1]}`
+      setTimeout(function(){
+        clickedDateDiv.classList.add('zoomEffect')
+      }, 100)
+      clickedDate.children[1].innerHTML = `${monthName}:${dayName}-${eventData[1]}`
 }
 

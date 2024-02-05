@@ -10,11 +10,13 @@
   --effects: rgba(12, 228, 203, 0.527);
   --background : #252627;
   --border: black;
+  --backgroundPage : rgb(17 161 144);
+  --backgroundPage2 : rgb(2, 173, 153);
 }
 
 body{
-  background: linear-gradient(to right, rgb(0, 139, 123) ,
-   rgb(0, 197, 174) 50%);
+  background: linear-gradient(to right, var(--backgroundPage2),
+  var(--backgroundPage) 50%);
 }
 
 button{
